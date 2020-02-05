@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width:100%;
+			height:800px;
+			margin:10px;
+			position:relative;
+		}
+		.img{
+			width:1337px;
+			height:800px;
+			position:absolute;
+			overflow:hidden;
+			top:0;
+			left:0;
+			right:0;
+			bottom:0;
+			margin:auto;
+		}
+		.img3{
+			width:1337px;
+			height:800px;
+		}
+		.img1{
+			width:230px;
+			height:410px;
+			display:none;
+			z-index:99;
+			position:absolute;
+			top:0;
+			left:0;
+			right:0;
+			bottom:0;
+			margin:auto;
+		}
+		.img2{
+			width:230px;
+			height:410px;
+			z-index:100;
+			position:absolute;
+			top:0;
+			left:0;
+			right:0;
+			bottom:0;
+			margin:auto;
+		}
+		
+	</style>
+	<body>
+		<input type="button" value="我要飞" id="btn"/>
+		<div class='box'>
+			<img  class='img1' src="https://statics.oneplus.cn/ov/assets/images/events/2019/08/hotdog/mclaren/mcl-6.webp">
+			<img  class='img2' src="https://statics.oneplus.cn/ov/assets/images/events/2019/08/hotdog/mclaren/mcl-7.webp">
+			<div class="img">
+				<img  class="img3" style="" src="https://statics.oneplus.cn/ov/assets/images/events/2019/08/hotdog/mclaren/mcl-5-1.webp">
+			</div>
+		<div>
+	</body>
+</html>
+<script type="text/javascript">
+	var class3 =  document.getElementsByClassName("img")[0];
+	var img3 =  document.getElementsByClassName("img3")[0];
+	var img1 =  document.getElementsByClassName("img1")[0];
+	var speedL = 0;
+	var speedT = 0;
+	var sL = 0;
+	var sT = 0;
+	var op = 1;
+	var opa = 0;
+	var btn = document.getElementById("btn");
+	class3.addEventListener("mousewheel", MouseWheelHandler, false);   
+	function MouseWheelHandler(e) {  
+		console.log('11',class3.offsetWidth)
+		if( e.wheelDelta < 0 && class3.offsetWidth > 177 && class3.offsetHeight > 400){
+			sT = sT-7;
+			speedL = -14;
+			speedT = -5;
+			class3.style.width = class3.offsetWidth + speedL + "px"
+			class3.style.height =  class3.offsetHeight + speedT + "px"
+			class3.style.borderRadius = "20px"
+			img3.style.transform = "translate3d("+sT+"px, 0px, 0px)"
+			
+		 }
+		 if(e.wheelDelta < 0  && class3.offsetHeight === 400){
+			opa += 0.2;
+			op -= 0.2;
+			img1.style.display = 'block';
+			img1.style.opacity = opa;
+		 }
+		if(e.wheelDelta > 0  && class3.offsetWidth <  1337 && class3.offsetHeight < 800){
+			sT = sT+7;
+			speedL = 14;
+			speedT = 5;
+			opa -= 0.2;
+			op += 0.2;
+			class3.style.width = class3.offsetWidth + speedL + "px"
+			class3.style.height =  class3.offsetHeight + speedT + "px"
+			img3.style.transform = "translate3d("+sT+"px, 0px, 0px)"
+			img1.style.opacity = 0;
+		 }
+		return false;   
+	}  
+	
+</script>
